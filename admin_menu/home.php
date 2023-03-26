@@ -25,9 +25,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 <p style="color:green"><?php if(isset($_SESSION['msg'])){echo $_SESSION['msg'];} unset($_SESSION['msg']);?></p>
 
-<?php 
-if($count>0){
-?>
+<?php if($count>0){ ?>
 <div style="overflow-x:auto;">
   <table>
     <tr>
@@ -70,8 +68,12 @@ $a++;
   </table>
 
 <?php
-$paginations = ceil($count / $per_page); 
+$paginations = ceil($count / $per_page);
+if(isset($_GET['start'])){
 $different = $paginations - $_GET['start'];
+}else{
+$different='';  
+}
 ?>
 
 <center>
@@ -92,7 +94,4 @@ $different = $paginations - $_GET['start'];
 
 	
 </div>
-<?php
-}
-else{echo "No Contact Found.......";}
-?>
+<?php }else{echo 'No Contact Found.....' ;} ?>
